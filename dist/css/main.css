@@ -11,48 +11,55 @@ html,
 body {
   height: 100%;
   width: 100%;
-  margin: 0; }
+  margin: 0 auto;
+  overflow-x: hidden; }
+
+main {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)), url(../img/birds.jpg);
+  background-position: cover;
+  background-repeat: repeat-x;
+  animation: animatedBackground 40s linear infinite;
+  z-index: 2; }
 
 header {
   color: #cccccc;
   width: 100%;
-  position: fixed;
+  background: transparent;
   display: flex;
+  height: 40px;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  align-content: center;
-  margin-top: 1rem; }
-  header .logo-name {
-    align-self: center; }
-    header .logo-name span {
-      display: block; }
+  padding-top: 2em;
+  color: hotpink; }
+  header .logo-name span {
+    display: block; }
   header .nav {
     align-self: center;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    list-style: none; }
-    header .nav li {
+    list-style: none;
+    flex-shrink: 1; }
+    header .nav .link {
       margin: 0 1rem; }
-      header .nav li a {
+      header .nav .link a {
         color: #cccccc;
         text-decoration: none; }
 
 .home-page {
   padding-top: 6rem;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)), url("https://media.moddb.com/images/members/2/1487/1486977/6965024-city-birds-clouds-sun.jpg");
-  background-position: 0px 0px;
-  background-repeat: repeat-x;
-  animation: animatedBackground 40s linear infinite;
-  z-index: 2; }
+  height: 100%; }
   .home-page .quote-1 {
-    font-size: 4rem;
+    font-size: 3em;
     margin-left: 10%;
     color: #f6c0a9;
     font-weight: 300; }
   .home-page .quote-2 {
-    font-size: 4rem;
+    font-size: 3em;
     margin-left: 60%;
     color: #f6c0a9;
     font-weight: 300; }
@@ -77,4 +84,138 @@ header {
     .home-page button:hover {
       color: #141313;
       background: #faecec;
-      letter-spacing: 7px; }
+      letter-spacing: 7px;
+      cursor: pointer; }
+
+.summary {
+  height: 30vh;
+  background: #141313;
+  color: aliceblue;
+  display: flex;
+  justify-content: space-around; }
+  .summary .passionate,
+  .summary .inspired,
+  .summary .adapt {
+    margin: auto;
+    text-align: center; }
+    .summary .passionate i,
+    .summary .inspired i,
+    .summary .adapt i {
+      font-size: 5em;
+      color: crimson; }
+    .summary .passionate p,
+    .summary .inspired p,
+    .summary .adapt p {
+      font-size: 1em;
+      color: aqua; }
+
+.about {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; }
+  .about h1 {
+    color: orangered;
+    margin-left: 3em;
+    font-size: 3em;
+    border-bottom: #0f0b0b solid 3px;
+    width: 35%; }
+  .about h2 {
+    color: #e032d8; }
+  .about .icons {
+    display: inline;
+    font-size: 4em;
+    color: black;
+    margin: auto; }
+    .about .icons i {
+      margin: 0 1em; }
+  .about .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; }
+    .about .info p {
+      margin: auto;
+      width: 50%;
+      font-size: 1.5em;
+      line-height: 1.5em; }
+
+.experience {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  margin-bottom: 3em;
+  background: #f5f5f5; }
+  .experience h1 {
+    margin: auto;
+    padding: 1em;
+    font-size: 4em;
+    font-weight: 300;
+    font-variant-caps: all-petite-caps;
+    color: blueviolet; }
+  .experience .projects-gallery {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    width: 80%;
+    height: 100%; }
+    .experience .projects-gallery .project {
+      width: 50%;
+      height: 100%;
+      position: relative; }
+      .experience .projects-gallery .project:hover .info {
+        transition: all 0.5s ease-in-out;
+        background: whitesmoke;
+        z-index: 5; }
+      .experience .projects-gallery .project img {
+        width: 100%;
+        height: 100%; }
+      .experience .projects-gallery .project .info {
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        justify-content: center;
+        font-size: 2em; }
+        .experience .projects-gallery .project .info h4 {
+          margin-bottom: 0; }
+        .experience .projects-gallery .project .info span {
+          display: block;
+          color: crimson; }
+        .experience .projects-gallery .project .info button {
+          margin: 3em auto;
+          width: 10em;
+          background: transparent;
+          padding: 10px;
+          border: crimson solid 1px;
+          transition: all 0.3s ease-in-out; }
+          .experience .projects-gallery .project .info button:hover {
+            color: #ffffff;
+            background: hotpink;
+            cursor: pointer; }
+
+footer {
+  height: 100px;
+  margin: 0;
+  background: #0f0b0b;
+  width: 100%;
+  color: white;
+  text-align: center; }
+  footer .icons {
+    font-size: 1.5em;
+    padding: 0.5em; }
+    footer .icons i {
+      margin: 0 0.5em; }
+  footer span {
+    color: cyan; }
