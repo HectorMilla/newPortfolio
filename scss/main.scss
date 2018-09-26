@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-// css animations for background
+//css animations for background
 @keyframes animatedBackground {
   from {
     background-position: 0 0;
@@ -11,38 +11,92 @@
     background-position: 100% 0;
   }
 }
+// // css for menu button
+$line-width: 60px;
+$line-height: $line-width/15;
+$line-spacing: $line-width/3;
+$line-color: purple;
+$animation-duration: 0.3s;
+
+@mixin variables {
+  height: $line-height;
+  width: $line-width;
+  background: $line-color;
+  transition: $animation-duration;
+}
+
+input[type="checkbox"] {
+  display: none;
+
+  &:checked ~ .container > .menu {
+    background: transparent;
+
+    &:before {
+      bottom: 0;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.container {
+  width: $line-width;
+  height: $line-height + $line-spacing * 2;
+  position: fixed;
+  margin-left: 78%;
+  margin-top: 1.5em;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.menu {
+  @include variables;
+  position: relative;
+  transform: translateY($line-spacing);
+
+  &:before {
+    @include variables;
+    position: absolute;
+    content: "";
+    bottom: $line-spacing;
+  }
+
+  &:after {
+    @include variables;
+    position: absolute;
+    content: "";
+    top: $line-spacing;
+  }
+}
+
+// // ///////////////////////////////////////
+
 html,
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
+  margin: 0;
   overflow-x: hidden;
 }
-// css for the logo and nav bar
-main {
-  height: 100vh;
+.content {
   width: 100%;
-  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)),
-    url(../img/birds.jpg);
-  background-position: cover;
-  background-repeat: repeat-x;
-  animation: animatedBackground 40s linear infinite;
-
-  z-index: 2;
+  height: 100%;
 }
+// // css for the logo and nav bar
 header {
   color: #cccccc;
   width: 100%;
   background: transparent;
   display: flex;
-  height: 40px;
+  height: 30px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-
-  padding-top: 2em;
   color: hotpink;
   .logo-name {
+    margin-top: 1rem;
     span {
       display: block;
     }
@@ -66,32 +120,47 @@ header {
   }
 }
 
-// css for the home page
-.home-page {
-  padding-top: 6rem;
+main {
+  height: 100vh;
   width: 100%;
-  height: 100%;
+  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)),
+    url(../img/birds.jpg);
+  background-position: contain;
+  background-repeat: repeat-x;
+  animation: animatedBackground 40s linear infinite;
+
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+// // css for the home page
+#home {
+  margin-top: 3rem;
+  width: 100%;
+  height: 100vh;
 
   .quote-1 {
-    font-size: 3em;
+    font-size: 2em;
     margin-left: 10%;
     color: #f6c0a9;
     font-weight: 300;
   }
   .quote-2 {
-    font-size: 3em;
-    margin-left: 60%;
+    font-size: 2em;
+    margin-left: 10%;
     color: #f6c0a9;
     font-weight: 300;
   }
   .small-bio {
-    font-size: 2rem;
-    width: 60%;
-    margin: 0 auto;
+    font-size: 1.5rem;
+    width: 80%;
+    margin: auto;
     color: #ddead5;
     font-weight: 300;
   }
-  button {
+  #explore {
     display: block;
     font-size: 2rem;
     margin-left: 25%;
@@ -130,15 +199,15 @@ header {
     }
     p {
       font-size: 1em;
-      color: aqua;
+      color: white;
     }
   }
 }
 
-.about {
+#about {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   h1 {
     color: orangered;
     margin-left: 3em;
@@ -154,8 +223,14 @@ header {
     font-size: 4em;
     color: rgb(0, 0, 0);
     margin: auto;
-    i {
+    a {
+      text-decoration: none;
       margin: 0 1em;
+
+      i {
+        color: black;
+        text-decoration: none;
+      }
     }
   }
   .info {
@@ -172,96 +247,11 @@ header {
   }
 }
 
-.experience {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  justify-content: space-between;
-  margin-bottom: 3em;
-  background: #f5f5f5;
-
-  h1 {
-    margin: auto;
-    padding: 1em;
-    font-size: 4em;
-    font-weight: 300;
-    font-variant-caps: all-petite-caps;
-    color: blueviolet;
-  }
-  .projects-gallery {
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-around;
-    width: 80%;
-    height: 100%;
-
-    .project {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      &:hover {
-        .info {
-          transition: all 0.5s ease-in-out;
-          background: whitesmoke;
-          z-index: 5;
-        }
-      }
-      img {
-        width: 100%;
-        height: 100%;
-      }
-      //overlay
-      .info {
-        z-index: -1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        text-align: center;
-        transform: translate(-50%, -50%);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-content: space-around;
-        justify-content: center;
-        font-size: 2em;
-
-        h4 {
-          margin-bottom: 0;
-        }
-        span {
-          display: block;
-          color: crimson;
-        }
-        button {
-          margin: 3em auto;
-          width: 10em;
-          background: transparent;
-          padding: 10px;
-          border: crimson solid 1px;
-          transition: all 0.3s ease-in-out;
-          &:hover {
-            color: #ffffff;
-            background: hotpink;
-
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
-}
-
 footer {
   height: 100px;
   margin: 0;
-
+  position: relative;
+  bottom: 0;
   background: #0f0b0b;
   width: 100%;
   color: white;
@@ -269,11 +259,229 @@ footer {
   .icons {
     font-size: 1.5em;
     padding: 0.5em;
-    i {
-      margin: 0 0.5em;
+    a {
+      text-decoration: none;
+      i {
+        margin: 0 0.5em;
+        color: white;
+      }
     }
   }
   span {
     color: cyan;
+  }
+}
+
+// Media Queries
+
+@media only screen and (max-width: 767px) {
+  header {
+    .nav {
+      display: none;
+    }
+  }
+
+  #home {
+    #explore {
+      display: none;
+    }
+  }
+
+  .summary {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem;
+    .passionate,
+    .inspired,
+    .adapt {
+      i {
+        font-size: 4em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+
+  #about {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    h1 {
+      margin: auto;
+      padding: 2rem;
+      font-size: 2em;
+      border-bottom: none;
+      width: 100%;
+    }
+    h2 {
+      color: rgb(224, 50, 216);
+    }
+    .icons {
+      display: flex;
+      font-size: 4em;
+      color: rgb(0, 0, 0);
+      margin: 0;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      a {
+        text-decoration: none;
+        margin: 0.5em;
+
+        i {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+    .info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      p {
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        font-size: 1.5em;
+        line-height: 1.5em;
+      }
+    }
+  }
+
+  #projects {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 3em;
+    background: #f5f5f5;
+
+    h1 {
+      margin: 3rem auto;
+
+      font-size: 4em;
+      font-weight: 300;
+      font-variant-caps: all-petite-caps;
+      color: blueviolet;
+    }
+    .projects-gallery {
+      margin: auto;
+      display: flex;
+
+      flex-direction: column;
+      justify-content: space-around;
+      align-content: space-around;
+      width: 80%;
+      height: 100%;
+
+      .project {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin-bottom: 1em;
+        &:hover {
+          .info {
+            transition: all 0.5s ease-in-out;
+            background: whitesmoke;
+            z-index: 5;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        //overlay
+        .info {
+          z-index: -1;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          text-align: center;
+          transform: translate(-50%, -50%);
+          height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: space-around;
+          justify-content: center;
+          font-size: 2em;
+
+          h4 {
+            margin-bottom: 0;
+          }
+          span {
+            display: block;
+            color: crimson;
+          }
+          button {
+            margin: 3em auto;
+            width: 10em;
+            background: transparent;
+            padding: 10px;
+            border: crimson solid 1px;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              color: #ffffff;
+              background: hotpink;
+
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #home {
+    padding-top: 6rem;
+    width: 100%;
+    height: 100%;
+
+    .quote-1 {
+      font-size: 3em;
+      margin-left: 10%;
+      color: #f6c0a9;
+      font-weight: 300;
+    }
+    .quote-2 {
+      font-size: 3em;
+      margin-left: 60%;
+      color: #f6c0a9;
+      font-weight: 300;
+    }
+    .small-bio {
+      font-size: 2rem;
+      width: 60%;
+      margin: 0 auto;
+      color: #ddead5;
+      font-weight: 300;
+    }
+    #explore {
+      display: block;
+      font-size: 2rem;
+      margin-left: 25%;
+      margin-top: 2rem;
+      padding: 1rem;
+      width: 300px;
+      background: transparent;
+      letter-spacing: 2.5px;
+      color: white;
+      border-color: #f6c0a9;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        color: #141313;
+        background: #faecec;
+        letter-spacing: 7px;
+        cursor: pointer;
+      }
+    }
   }
 }

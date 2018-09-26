@@ -7,35 +7,73 @@
   to {
     background-position: 100% 0; } }
 
+input[type="checkbox"] {
+  display: none; }
+  input[type="checkbox"]:checked ~ .container > .menu {
+    background: transparent; }
+    input[type="checkbox"]:checked ~ .container > .menu:before {
+      bottom: 0;
+      transform: rotate(45deg); }
+    input[type="checkbox"]:checked ~ .container > .menu:after {
+      top: 0;
+      transform: rotate(-45deg); }
+
+.container {
+  width: 60px;
+  height: 44px;
+  position: fixed;
+  margin-left: 78%;
+  margin-top: 1.5em;
+  cursor: pointer;
+  z-index: 4; }
+
+.menu {
+  height: 4px;
+  width: 60px;
+  background: purple;
+  transition: 0.3s;
+  position: relative;
+  transform: translateY(20px); }
+  .menu:before {
+    height: 4px;
+    width: 60px;
+    background: purple;
+    transition: 0.3s;
+    position: absolute;
+    content: "";
+    bottom: 20px; }
+  .menu:after {
+    height: 4px;
+    width: 60px;
+    background: purple;
+    transition: 0.3s;
+    position: absolute;
+    content: "";
+    top: 20px; }
+
 html,
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
+  margin: 0;
   overflow-x: hidden; }
 
-main {
-  height: 100vh;
+.content {
   width: 100%;
-  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)), url(../img/birds.jpg);
-  background-position: cover;
-  background-repeat: repeat-x;
-  animation: animatedBackground 40s linear infinite;
-  z-index: 2; }
+  height: 100%; }
 
 header {
   color: #cccccc;
   width: 100%;
   background: transparent;
   display: flex;
-  height: 40px;
+  height: 30px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  padding-top: 2em;
   color: hotpink; }
-  header .logo-name span {
-    display: block; }
+  header .logo-name {
+    margin-top: 1rem; }
+    header .logo-name span {
+      display: block; }
   header .nav {
     align-self: center;
     display: flex;
@@ -49,27 +87,39 @@ header {
         color: #cccccc;
         text-decoration: none; }
 
-.home-page {
-  padding-top: 6rem;
+main {
+  height: 100vh;
   width: 100%;
-  height: 100%; }
-  .home-page .quote-1 {
-    font-size: 3em;
+  background: linear-gradient(rgba(68, 68, 68, 0.7), rgba(15, 9, 9, 0.6)), url(../img/birds.jpg);
+  background-position: contain;
+  background-repeat: repeat-x;
+  animation: animatedBackground 40s linear infinite;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+
+#home {
+  margin-top: 3rem;
+  width: 100%;
+  height: 100vh; }
+  #home .quote-1 {
+    font-size: 2em;
     margin-left: 10%;
     color: #f6c0a9;
     font-weight: 300; }
-  .home-page .quote-2 {
-    font-size: 3em;
-    margin-left: 60%;
+  #home .quote-2 {
+    font-size: 2em;
+    margin-left: 10%;
     color: #f6c0a9;
     font-weight: 300; }
-  .home-page .small-bio {
-    font-size: 2rem;
-    width: 60%;
-    margin: 0 auto;
+  #home .small-bio {
+    font-size: 1.5rem;
+    width: 80%;
+    margin: auto;
     color: #ddead5;
     font-weight: 300; }
-  .home-page button {
+  #home #explore {
     display: block;
     font-size: 2rem;
     margin-left: 25%;
@@ -81,7 +131,7 @@ header {
     color: white;
     border-color: #f6c0a9;
     transition: all 0.4s ease-in-out; }
-    .home-page button:hover {
+    #home #explore:hover {
       color: #141313;
       background: #faecec;
       letter-spacing: 7px;
@@ -107,107 +157,46 @@ header {
     .summary .inspired p,
     .summary .adapt p {
       font-size: 1em;
-      color: aqua; }
+      color: white; }
 
-.about {
+#about {
   display: flex;
   flex-direction: column;
-  height: 100vh; }
-  .about h1 {
+  height: 100%; }
+  #about h1 {
     color: orangered;
     margin-left: 3em;
     font-size: 3em;
     border-bottom: #0f0b0b solid 3px;
     width: 35%; }
-  .about h2 {
+  #about h2 {
     color: #e032d8; }
-  .about .icons {
+  #about .icons {
     display: inline;
     font-size: 4em;
     color: black;
     margin: auto; }
-    .about .icons i {
+    #about .icons a {
+      text-decoration: none;
       margin: 0 1em; }
-  .about .info {
+      #about .icons a i {
+        color: black;
+        text-decoration: none; }
+  #about .info {
     display: flex;
     flex-direction: row;
     justify-content: space-around; }
-    .about .info p {
+    #about .info p {
       margin: auto;
       width: 50%;
       font-size: 1.5em;
       line-height: 1.5em; }
 
-.experience {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  justify-content: space-between;
-  margin-bottom: 3em;
-  background: #f5f5f5; }
-  .experience h1 {
-    margin: auto;
-    padding: 1em;
-    font-size: 4em;
-    font-weight: 300;
-    font-variant-caps: all-petite-caps;
-    color: blueviolet; }
-  .experience .projects-gallery {
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-around;
-    width: 80%;
-    height: 100%; }
-    .experience .projects-gallery .project {
-      width: 50%;
-      height: 100%;
-      position: relative; }
-      .experience .projects-gallery .project:hover .info {
-        transition: all 0.5s ease-in-out;
-        background: whitesmoke;
-        z-index: 5; }
-      .experience .projects-gallery .project img {
-        width: 100%;
-        height: 100%; }
-      .experience .projects-gallery .project .info {
-        z-index: -1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        text-align: center;
-        transform: translate(-50%, -50%);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-content: space-around;
-        justify-content: center;
-        font-size: 2em; }
-        .experience .projects-gallery .project .info h4 {
-          margin-bottom: 0; }
-        .experience .projects-gallery .project .info span {
-          display: block;
-          color: crimson; }
-        .experience .projects-gallery .project .info button {
-          margin: 3em auto;
-          width: 10em;
-          background: transparent;
-          padding: 10px;
-          border: crimson solid 1px;
-          transition: all 0.3s ease-in-out; }
-          .experience .projects-gallery .project .info button:hover {
-            color: #ffffff;
-            background: hotpink;
-            cursor: pointer; }
-
 footer {
   height: 100px;
   margin: 0;
+  position: relative;
+  bottom: 0;
   background: #0f0b0b;
   width: 100%;
   color: white;
@@ -215,7 +204,170 @@ footer {
   footer .icons {
     font-size: 1.5em;
     padding: 0.5em; }
-    footer .icons i {
-      margin: 0 0.5em; }
+    footer .icons a {
+      text-decoration: none; }
+      footer .icons a i {
+        margin: 0 0.5em;
+        color: white; }
   footer span {
     color: cyan; }
+
+@media only screen and (max-width: 767px) {
+  header .nav {
+    display: none; }
+  #home #explore {
+    display: none; }
+  .summary {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem; }
+    .summary .passionate i,
+    .summary .inspired i,
+    .summary .adapt i {
+      font-size: 4em; }
+    .summary .passionate p,
+    .summary .inspired p,
+    .summary .adapt p {
+      font-size: 1em; }
+  #about {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center; }
+    #about h1 {
+      margin: auto;
+      padding: 2rem;
+      font-size: 2em;
+      border-bottom: none;
+      width: 100%; }
+    #about h2 {
+      color: #e032d8; }
+    #about .icons {
+      display: flex;
+      font-size: 4em;
+      color: black;
+      margin: 0;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center; }
+      #about .icons a {
+        text-decoration: none;
+        margin: 0.5em; }
+        #about .icons a i {
+          color: black;
+          text-decoration: none; }
+    #about .info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+      #about .info p {
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        font-size: 1.5em;
+        line-height: 1.5em; }
+  #projects {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 3em;
+    background: #f5f5f5; }
+    #projects h1 {
+      margin: 3rem auto;
+      font-size: 4em;
+      font-weight: 300;
+      font-variant-caps: all-petite-caps;
+      color: blueviolet; }
+    #projects .projects-gallery {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-content: space-around;
+      width: 80%;
+      height: 100%; }
+      #projects .projects-gallery .project {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin-bottom: 1em; }
+        #projects .projects-gallery .project:hover .info {
+          transition: all 0.5s ease-in-out;
+          background: whitesmoke;
+          z-index: 5; }
+        #projects .projects-gallery .project img {
+          width: 100%;
+          height: 100%; }
+        #projects .projects-gallery .project .info {
+          z-index: -1;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          text-align: center;
+          transform: translate(-50%, -50%);
+          height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: space-around;
+          justify-content: center;
+          font-size: 2em; }
+          #projects .projects-gallery .project .info h4 {
+            margin-bottom: 0; }
+          #projects .projects-gallery .project .info span {
+            display: block;
+            color: crimson; }
+          #projects .projects-gallery .project .info button {
+            margin: 3em auto;
+            width: 10em;
+            background: transparent;
+            padding: 10px;
+            border: crimson solid 1px;
+            transition: all 0.3s ease-in-out; }
+            #projects .projects-gallery .project .info button:hover {
+              color: #ffffff;
+              background: hotpink;
+              cursor: pointer; } }
+
+@media only screen and (min-width: 768px) {
+  #home {
+    padding-top: 6rem;
+    width: 100%;
+    height: 100%; }
+    #home .quote-1 {
+      font-size: 3em;
+      margin-left: 10%;
+      color: #f6c0a9;
+      font-weight: 300; }
+    #home .quote-2 {
+      font-size: 3em;
+      margin-left: 60%;
+      color: #f6c0a9;
+      font-weight: 300; }
+    #home .small-bio {
+      font-size: 2rem;
+      width: 60%;
+      margin: 0 auto;
+      color: #ddead5;
+      font-weight: 300; }
+    #home #explore {
+      display: block;
+      font-size: 2rem;
+      margin-left: 25%;
+      margin-top: 2rem;
+      padding: 1rem;
+      width: 300px;
+      background: transparent;
+      letter-spacing: 2.5px;
+      color: white;
+      border-color: #f6c0a9;
+      transition: all 0.4s ease-in-out; }
+      #home #explore:hover {
+        color: #141313;
+        background: #faecec;
+        letter-spacing: 7px;
+        cursor: pointer; } }

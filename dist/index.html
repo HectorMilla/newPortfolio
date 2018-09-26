@@ -11,7 +11,7 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Noto+Serif+JP" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
-    <script src="./js/main.js"></script>
+
 
 </head>
 
@@ -27,21 +27,20 @@
 
                 <ul class="nav">
                     <li class="link">
-                        <a href="#">Home</a>
+                        <a href="#home">Home</a>
                     </li>
                     <li class="link">
-                        <a href="#">About</a>
+                        <a type="button" href="#about">About</a>
                     </li>
                     <li class="link">
-                        <a href="#">Projects</a>
+                        <a href="#projects">Projects</a>
                     </li>
-                    <li class="link">
-                        <a href="#">Contact</a>
-                    </li>
+
                 </ul>
 
             </header>
-            <div class="home-page">
+
+            <div id="home">
                 <h1 class="quote-1">Be The Change</h1>
                 <h4 class="small-bio">It's crazy how the small things are the ones that ended up meaning the most. At
                     the
@@ -49,7 +48,7 @@
                     I wrote my first "Hello World", I would have never imagined that would turn into such an amazing
                     journey
                     and lifestyle</h4>
-                <button class="explore">Explore</button>
+                <button id="explore">Explore</button>
                 <h1 class="quote-2">You Want To See</h1>
             </div>
         </main>
@@ -68,7 +67,14 @@
             </div>
 
         </div>
-        <div class="about">
+        <!-- Menu button for small screens -->
+        <label for="hamburger">
+            <input type="checkbox" id="hamburger" />
+            <div class="container">
+                <div class="menu"></div>
+            </div>
+        </label>
+        <div id="about">
             <h1 class="heading">Get To Know Me</h1>
 
             <div class="info">
@@ -92,13 +98,17 @@
                 <div class="skills"></div>
             </div>
             <div class="icons">
-                <i class="fab fa-linkedin"></i>
-                <i class="fab fa-github"></i>
-                <i class="fas fa-globe"></i>
+                <a href="https://www.linkedin.com/in/hector-galicia-milla
+                    ">
+                    <i class="fab fa-linkedin "></i>
+                </a>
+                <a href="https://github.com/HectorMilla">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
 
         </div>
-        <div class="experience">
+        <div id="projects">
             <h1>Projects</h1>
 
             <div class="projects-gallery">
@@ -115,7 +125,10 @@
                     <div class="info">
                         <h4>DevUnite</h4>
                         <span>Full-Stack</span>
-                        <button>Learn More</button>
+                        <a href="https://arcane-savannah-11132.herokuapp.com/">
+                            <button>Learn More</button>
+                        </a>
+
                     </div>
 
                 </div>
@@ -124,7 +137,9 @@
                     <div class="info">
                         <h4>Hectflix</h4>
                         <span>React.js</span>
-                        <button>Learn More</button>
+                        <a href="https://hectormilla.github.io/netflixclone/#/">
+                            <button>Learn More</button>
+                        </a>
                     </div>
 
                 </div>
@@ -133,7 +148,7 @@
                     <div class="info">
                         <h4>Client Manager</h4>
                         <span>React.js</span>
-                        <button>Learn More</button>
+                        <a href="https://reactclientpanel-49461.firebaseapp.com/"><button>Learn More</button></a>
                     </div>
 
                 </div>
@@ -142,7 +157,9 @@
                     <div class="info">
                         <h4>Song Lyrics</h4>
                         <span>React.js</span>
-                        <button>Learn More</button>
+                        <a href="https://hectormilla.github.io/songlyrics/#/">
+                            <button>Learn More</button>
+                        </a>
                     </div>
 
                 </div>
@@ -150,15 +167,21 @@
 
             </div>
         </div>
+        <footer>
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/hector-galicia-milla
+                            ">
+                    <i class="fab fa-linkedin "></i>
+                </a>
+                <a href="https://github.com/HectorMilla">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <span id="test">Hector Galicia Milla &copy;2018</span>
+        </footer>
     </div>
-    <footer>
-        <div class="icons">
-            <i class="fab fa-linkedin"></i>
-            <i class="fab fa-github"></i>
-            <i class="fas fa-globe"></i>
-        </div>
-        <span>Hector Galicia Milla &copy;2018</span>
-    </footer>
+
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
